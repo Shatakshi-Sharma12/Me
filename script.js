@@ -19,4 +19,15 @@ function activate(e) {
   }
 }
 
+function repeatSong(e) {
+  const song = e.target;
+  song.currentTime = 0;
+  song.play();
+}
+
 document.addEventListener("click", activate, false);
+
+const songs = document.querySelectorAll(".song");
+songs.forEach((song) => {
+  song.addEventListener("ended", repeatSong);
+});
